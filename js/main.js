@@ -2,13 +2,14 @@ const searchDataLoad = (search) => {
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayMeals(data));
+    .then((data) => displayMeals6(data));
 };
 // Display meals
-const displayMeals = (meals) => {
-  const parentDiv = document.getElementById("food-card-container");
-  parentDiv.innerText = '';
-  for (const meal of meals.meals) {
+const displayMeals6 = (meals) => {
+   const slices = meals.meals.slice(0,6);
+   const parentDiv = document.getElementById("food-card-container");
+   parentDiv.innerText = '';
+   for (const meal of slices) {
     const div = document.createElement("div");
     div.innerHTML = `
         <div class="card grid grid-cols-2 bg-base-100 shadow-xl">
@@ -21,8 +22,24 @@ const displayMeals = (meals) => {
         `;
     parentDiv.appendChild(div);
   }
-  let totalChild = parentDiv.children;
-  console.log(totalChild);
+  const showAllBtn = document.getElementById('btn-show-all');
+  showAllBtn.style.display = 'block';
+  showAllBtn.addEventListener('click', ()=>{
+    for (const meal of meals.meals) {
+        const div = document.createElement("div");
+        div.innerHTML = `
+            <div class="card grid grid-cols-2 bg-base-100 shadow-xl">
+                    <figure><img class="w-fit" src="${meal.strMealThumb}" alt="Album"/></figure>
+                    <div class="card-body px-6 py-10">
+                      <h2 class="text-3xl font-bold">${meal.strMeal}</h2>
+                      <p>There are many variations of passages of available, but the majority have suffered</p>
+                      <label onclick="loadMealDetails(${meal.idMeal})" for="my-modal-6" class="text-[#FFC107] underline p-3 cursor-pointer">View Details</label>
+             </div>
+            `;
+        parentDiv.appendChild(div);
+      }
+      showAllBtn.style.display = 'none';
+  })
 };
 // get input value
 const searchText = () => {
@@ -47,8 +64,8 @@ const displayMealDetails = (data) => {
                   <div class="modal modal-bottom sm:modal-middle">
                     <div class="modal-box">
                     <img class="w-[150px]" src="${data.meals[0].strMealThumb}"/>
-                      <h3 id="modal-title" class="font-semibold text-lg"><span class="font-bold">Name:</span> ${data.meals[0].strMeal}</h3>
-                      <p class="mt-3"><span class="font-bold">Category:</span> ${data.meals[0].strCategory}</p>
+                      <h3 id="modal-title" class="font-semibold text-lg mt-3"><span class="font-bold ">Name:</span> ${data.meals[0].strMeal}</h3>
+                      <p class="mt-1"><span class="font-bold">Category:</span> ${data.meals[0].strCategory}</p>
                       <p class="mt-1"><span class="font-bold">Country Origin:</span> ${data.meals[0].strArea}</p>
                       <p class="mt-1"><span class="font-bold">YouTube:</span> ${data.meals[0].strYoutube}</p>
                       <div class="modal-action">
