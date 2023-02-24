@@ -1,16 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MealDB-API</title>
-</head>
-<body>
-    
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasty Hut</title>
+    <!-- Tailwindcss and Library -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.0/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header>
+      <!-- Navbar -->
+      <nav class="flex justify-between mx-20 py-5">
+        <h1 class="text-xl md:text-2xl font-bold">Tasty HUT</h1>
+        <button
+          class="px-4 py-2 text-base md:text-xl font-bold bg-[#FFC107] text-black rounded-md text-center hover:scale-[0.9] duration-300"
+        >
+          Sign up
+        </button>
+      </nav>
+      <!-- Banner section -->
+      <div
+        class="bg-[url('/images/banner_1.png')] h-[100vh] w-full bg-cover bg-center"
+      >
+        <div
+          class="w-full h-full text-center backdrop-brightness-50 flex justify-center items-center"
+        >
+          <div class="flex flex-col items-center">
+            <h1 class="text-2xl md:text-6xl font-bold text-white">
+              Taste Our Delicious <br> Best Foods
+            </h1>
+            <p class="text-sm md:text-base font-medium text-slate-300 my-3">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have <br> suffered alteration in some form, by
+              injected humou.
+            </p>
+            <div class="w-[90%] flex justify-center h-12 mt-5">
+              <input class="w-[80%] pl-4 outline-none h-full rounded-l-md" type="text" placeholder="Search any food" />
+              <button class="w-[20%] px-3 py-1 text-black font-bold text-xl bg-[#FFC107] h-full rounded-r-md hover:bg-gray-500 hover:text-white">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+        <!-- Your Favorite Food section -->
+        <section class="max-w-[1100px] mx-auto my-20">
+            <h1 class="text-center text-xl md:text-4xl font-semibold">Your Favourite Food</h1>
+            <div id="food-card-container">
 
+            </div>
+        </section>
+    </main>
+    <footer></footer>
     <!-- Local JS file -->
     <script src="js/utilities.js"></script>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
